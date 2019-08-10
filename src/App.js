@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Link } from 'react-router-dom';
+
 import './App.css';
+import ErrorBoundary from './errorBoundary.js';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="vw100 vh100 bg-orange flex flex-column items-center justify-center">
+      <header className="wp100 wh100 flex-row justify-center items-center">
+        <button onClick={() => {
+          let lol;
+          lol.hihi()
+        }}>Hi</button>
+        <button>Ho</button>
+        <button>He</button>
       </header>
+      <div className="wp100 wh100 flex-row justify-center items-center">
+        <Link to="dashboard">Dashboard</Link>
+      </div>
     </div>
   );
 }
 
-export default App;
+export default function wrapped() {
+  return (
+    <ErrorBoundary appName={'App'}>
+      <App/>
+    </ErrorBoundary>
+  );
+}
